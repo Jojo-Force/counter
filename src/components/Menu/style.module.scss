@@ -1,0 +1,120 @@
+@use "@/assets/styles/global.scss" as g;
+
+.menuBox {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  gap: 1rem;
+  padding-bottom: 20rem;
+  overflow-y: auto;
+  white-space: pre-line;
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.title {
+}
+
+.title {
+  margin-bottom: 1.2rem;
+}
+
+.betweenBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.quizName {
+  font-size: 2rem;
+
+  color: g.$text_dark_color;
+}
+
+.quizNameNumber {
+  color: g.$text_dark_color;
+}
+
+.settingIcon {
+  font-size: 3rem;
+  color: g.$setting_icon_color;
+}
+.bigTitle {
+  display: flex;
+  gap: 2.3rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  //justify-content: flex-start;
+  //align-items: center;
+  height: 100%;
+  //width: 100%;
+}
+.section {
+  //height: ;
+  position: relative;
+}
+
+.itemBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.deleteGroupBtn {
+  color: g.$text_dark_color;
+  font-size: 2.5rem;
+  border: none;
+  right: 1rem;
+  top: 1rem;
+}
+
+.mainSelect {
+  width: 150px;
+  height: 40px;
+  //margin-bottom: 1 rem !important;
+}
+
+:global {
+  .ant-select-selector {
+    font-family: "Noto Serif SC", serif !important; /* 思源宋体 */
+    font-weight: 600;
+    font-size: 2rem !important;
+    background-color: g.$shade_color !important;
+    border: none !important;
+    color: g.$text_color !important;
+    height: 40px !important;
+    padding: 2rem !important;
+  }
+  .ant-select-dropdown {
+    font-family: "Noto Serif SC", serif !important; /* 思源宋体 */
+    font-weight: 600;
+    background-color: g.$shade_color !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: g.$text_color !important;
+  }
+
+  /* 每个选项的样式 */
+  .ant-select-item {
+    background-color: g.$light-color !important;
+    color: g.$text_color !important;
+    padding: 10px 16px !important;
+  }
+
+  /* 鼠标悬停 */
+  .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+    background-color: g.$shade_color !important; /* 悬停高亮 */
+  }
+
+  /* 选中项 */
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: g.$shade_color !important;
+    font-weight: bold;
+  }
+}

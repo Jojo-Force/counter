@@ -1,0 +1,184 @@
+/*
+--- 01 字体系统
+  - FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+  - Font weights:
+  Default：600
+  Bold：700
+
+  - Line heights:
+  Default: 1.5
+
+  - Letter spacing
+
+
+  --- 02 颜色
+  - 主色：#be4bdb
+  - Tints: #f8f0fc
+           #f3d9fa
+  - Shades:#9c36b5
+  --- 03 图片
+
+  --- 05 阴影
+  //box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 7.5%);
+  --- 06 圆角
+//Default: 9px
+//Medium: 11px
+  --- 07 空白
+    - SPACING SYSTEM (px)
+    2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+$light-color: #fa5252;
+$primary-color: #f03e3e;
+$shade_color: #e03131;
+$tint-color: #212529;
+$tint-color2: #343a40;
+$tint-color3: #212529;
+
+$text_color: #e9ecef;
+$text_dark_color: #adb5bd;
+
+$body_bg_color: $tint-color;
+
+$modal_bg_color: $tint-color;
+$modal_btn_color: $primary-color;
+$modal_btn_hover_color: $shade_color;
+$modal_text_color: $text_color;
+
+$right_answer: $shade_color;
+
+$setting_icon_color: $primary-color;
+
+$next_btn_color: $primary-color;
+$next_btn_hover_color: $primary-color;
+
+$setting_btn_color: $primary-color;
+$setting_btn_hover_color: $primary-color;
+
+$answer_btn_color: $primary-color;
+$answer_btn_hover_color: $primary-color;
+
+$setting_box_bg_color: rgba(243, 240, 255, 0.51);
+
+$box_bg_color: $tint-color;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Noto Serif SC", serif !important; /* 思源宋体 */
+  font-weight: 600;
+  line-height: 1.5;
+  background-color: $body_bg_color;
+  // 禁用文字选中
+  user-select: none;
+}
+.ant-btn,
+.ant-modal,
+.ant-radio-wrapper,
+.ant-checkbox-wrapper,
+.ant-message-notice {
+  font-family: "Noto Serif SC", serif !important; /* 思源宋体 */
+  font-weight: 600;
+}
+img {
+  //禁止拖动图片
+  -webkit-user-drag: none;
+}
+
+//首页的布局样式
+
+.site-layout .site-layout-background {
+  background: $text_color;
+}
+
+/**全局修改ant样式*/
+.loginbox {
+  //修改样式输入框样式
+  .ant-input-outlined {
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #1890ff;
+    height: 38px;
+  }
+  .ant-input {
+    color: $text_color;
+  }
+  .ant-input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.66);
+  }
+  .ant-input-password {
+    color: $text_color;
+  }
+
+  //眼睛图
+  .ant-input-password-icon.anticon,
+  .ant-input-password-icon.anticon:hover {
+    color: #1890ff;
+  }
+
+  .ant-radio-label {
+    color: $text_color;
+    font-size: 3rem;
+  }
+}
+
+// 设置消息提示框背景色及字体颜色
+.ant-message-notice .ant-message-notice-content {
+  background-color: $modal_bg_color !important;
+  color: $modal_text_color;
+}
+
+.ant-modal .ant-modal-content {
+  background-color: $modal_bg_color !important;
+}
+.ant-btn {
+  font-size: 1.6rem;
+}
+.ant-modal-confirm .ant-btn {
+  font-size: 2rem;
+  //margin-right: 40%;
+}
+.ant-btn-variant-outlined,
+.ant-btn-variant-dashed {
+  background-color: $modal_bg_color;
+  border: none;
+}
+
+.ant-btn-variant-outlined:hover,
+.ant-btn-variant-dashed:hover {
+  background-color: $modal_bg_color !important;
+  border: none;
+}
+
+.ant-btn-variant-outlined span {
+  color: $text_color;
+}
+
+.ant-btn-variant-solid {
+  background-color: $modal_btn_color;
+}
+
+.ant-btn-variant-solid:hover {
+  background-color: $modal_btn_hover_color !important;
+}
+.ant-modal-confirm .ant-modal-confirm-title {
+  color: $modal_text_color;
+  font-size: 2rem;
+}
+
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+  .ant-checkbox-checked:not(.ant-checkbox-disabled)
+  .ant-checkbox-inner {
+  background-color: $modal_btn_color;
+}
+
+.ant-checkbox-wrapper:focus-visible {
+  outline-color: $body_bg_color;
+}

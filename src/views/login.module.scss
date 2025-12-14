@@ -1,0 +1,104 @@
+@use "@/assets/styles/global.scss" as g;
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 90vh;
+
+  .main {
+    width: 100%;
+    //min-height: 100vh;
+  }
+
+  .loginBox {
+    width: 100%;
+    max-width: 380px;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //max-height: 100vh;
+
+    color: g.$text_color;
+    h1 {
+      font-weight: bold;
+      font-size: 2.4rem;
+      text-align: center;
+      color: g.$text_color;
+    }
+
+    .captchaBox {
+      display: inline-flex;
+      width: 100%;
+      height: 32px;
+      justify-content: space-between;
+      .captchaImg {
+        margin-left: 2.4rem;
+        cursor: pointer;
+      }
+      canvas {
+        margin-left: 1.2rem;
+        border-radius: 6px;
+      }
+    }
+  }
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .radio {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .quizSpan {
+    color: g.$text-color;
+    font-size: 2.4rem;
+    &.rightAnswer {
+      color: #f03e3e;
+    }
+  }
+  .quizNumber {
+    font-size: 2rem;
+  }
+  .quizAsk {
+    font-weight: normal;
+    font-size: 2.4rem;
+  }
+
+  .quizNameNumber {
+    color: g.$text_dark_color;
+  }
+}
+
+.loginPage::after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: g.$tint-color2;
+  border-radius: 50%;
+  z-index: -2;
+  transform: translate(-50%, -50%);
+  opacity: 0.25;
+}
+.loginPage::before {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: g.$tint-color2;
+  border-radius: 50%;
+  z-index: -1;
+  transform: translate(-80%, -80%);
+  opacity: 0.3;
+}

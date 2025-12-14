@@ -1,0 +1,31 @@
+@use "@/assets/styles/global.scss" as g;
+.items {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  //justify-items: center;
+  //gap: 1.6rem;
+  place-items: center;
+}
+
+.deleteBtn {
+  color: g.$text_dark_color;
+  font-size: 2rem;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.itemsBox {
+  height: 10rem;
+  width: 100%;
+  background-color: g.$shade_color;
+  color: g.$text_color;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+}

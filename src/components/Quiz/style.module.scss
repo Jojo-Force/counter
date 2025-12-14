@@ -1,0 +1,241 @@
+@use "@/assets/styles/global" as g;
+
+.countContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.settingBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 50%;
+}
+.radio {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.quizSpan {
+  color: g.$text_color;
+  font-size: 2.4rem;
+  &.rightAnswer {
+    color: g.$right_answer;
+  }
+}
+.quizSpanSmall {
+  color: g.$text_color;
+  font-size: 1.8rem;
+  &.rightAnswer {
+    color: g.$right_answer;
+  }
+}
+
+.quizSpanMeduim {
+  color: g.$text_color;
+  font-size: 2rem;
+  &.rightAnswer {
+    color: g.$right_answer;
+  }
+}
+.quizNumber {
+  font-size: 2rem;
+  color: g.$text_dark_color;
+}
+
+.quizLife {
+  font-size: 2rem;
+  font-weight: 700;
+  color: g.$text_dark_color;
+}
+
+.quizLifeIcon {
+  font-size: 2rem;
+}
+
+.bigTitle {
+  display: flex;
+  gap: 2.3rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.SingleQuizRadioSmall {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20%;
+  gap: 16px;
+}
+
+.SingleQuizRadioMedium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  gap: 8px;
+}
+
+.SingleQuizRadioLarge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.setting {
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(100%, -40%);
+  transition: all 0.5s ease-in;
+  border-radius: 10px;
+  opacity: 0;
+  /*2.禁用tab到导航栏*/
+  pointer-events: none;
+  /*3.通知screen readers*/
+  visibility: hidden;
+  backdrop-filter: blur(9px);
+  background-color: g.$setting_box_bg_color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.settingOpen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.countBtn {
+  border: none;
+  border-radius: 2rem;
+  position: absolute;
+  bottom: 18rem;
+  left: 30%;
+  transform: translate(-50%, 0%);
+  //background-color: g.$next_btn_color;
+  height: 12rem;
+  width: 12rem;
+  align-self: center;
+  background: url("../../assets/imgs/btn_up.png") no-repeat;
+  background-size: 100% 100%;
+  transition: all 0.1s;
+  opacity: 1;
+  &:active {
+    background: url("../../assets/imgs/btn_down.png") no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.1;
+  }
+}
+
+.answerBtn {
+  background-color: g.$answer_btn_color;
+  height: 60px;
+  margin-top: 4rem;
+  margin-bottom: 2.4rem;
+  width: 80% !important;
+  &:hover {
+    background-color: g.$answer_btn_hover_color !important;
+  }
+}
+
+.settingBtn {
+  background-color: g.$setting_btn_color;
+  height: 60px;
+  width: 80%;
+  margin-top: 4rem;
+  margin-bottom: 2.4rem;
+
+  &:hover {
+    background-color: g.$setting_btn_hover_color !important;
+  }
+}
+
+.text {
+  color: g.$text_color;
+  height: 80vh; // 固定高度
+  overflow-y: auto;
+  white-space: pre-line;
+  font-size: 2.8rem;
+  padding-bottom: 40rem;
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.counter {
+  display: inline-block;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.title {
+  font-size: 2.5rem;
+}
+
+.betweenBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.betweenBoxBox {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  //justify-content: center;
+  width: 10%;
+}
+
+.quizName {
+  font-size: 2rem;
+
+  color: g.$text_dark_color;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.quizNameNumber {
+  color: g.$text_dark_color;
+}
+
+.settingIcon {
+  font-size: 4rem;
+  color: g.$text_dark_color;
+}
+
+.formIcon {
+  font-size: 4rem;
+  color: g.$text_dark_color;
+}
+.bigTitle {
+  display: flex;
+  gap: 2.3rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.menu {
+  //height: 100vh;
+}

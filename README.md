@@ -1,6 +1,6 @@
 # counter
 
-counter is buddhist prayer counting app which created by react.js, simple on https://jojo-force.github.io/
+counter is buddhist prayer counting app which created by react.js.
 
 ## Install Package
 

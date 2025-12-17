@@ -1,6 +1,6 @@
 import style from "./style.module.scss";
 
-import type { QuizProps } from "../../types/api";
+import type { QuizProps, ReaderProps } from "../../types/api";
 import textData from "../../textdata";
 import { useRef, useState } from "react";
 import soundFile1 from "../../assets/sound/fish1.wav";
@@ -9,7 +9,7 @@ import soundFile3 from "../../assets/sound/fish3.wav";
 import { FormOutlined, SettingOutlined } from "@ant-design/icons";
 import Setting from "../Setting";
 
-const Quiz = ({
+const Reader = ({
   settingValue,
   setPageNum,
   currentId,
@@ -19,7 +19,7 @@ const Quiz = ({
   msgError,
   globalSetting,
   setGlobalSetting,
-}: QuizProps) => {
+}: ReaderProps) => {
   const [nowCount, setNowCount] = useState(0);
   const [showSetting, setShowSetting] = useState(false);
   const countUp = () => {
@@ -134,4 +134,4 @@ const Quiz = ({
   );
 };
 
-export default Quiz;
+export default Reader;

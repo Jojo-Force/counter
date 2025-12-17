@@ -5,8 +5,7 @@ import { message, Modal } from "antd";
 const { confirm } = Modal;
 
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import Quiz from "../components/Quiz";
-import Setting from "../components/Setting";
+import Reader from "../components/Reader";
 import Menu from "../components/Menu";
 
 const View = () => {
@@ -188,7 +187,7 @@ const View = () => {
           {/* 表单部分 */}
 
           {pageNum === 2 && (
-            <Quiz
+            <Reader
               setPageNum={setPageNum2}
               currentId={currentId}
               itemDatas={itemDatas}

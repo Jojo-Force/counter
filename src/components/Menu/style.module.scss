@@ -26,6 +26,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .quizName {
@@ -39,9 +41,10 @@
 }
 
 .settingIcon {
-  font-size: 3rem;
-  color: g.$setting_icon_color;
+  font-size: 3.5rem;
+  color: g.$text_dark_color;
 }
+
 .bigTitle {
   display: flex;
   gap: 2.3rem;
@@ -50,6 +53,7 @@
   margin-bottom: 2rem;
   font-size: 2rem;
 }
+
 
 .menu {
   display: flex;
@@ -74,10 +78,15 @@
   color: g.$text_dark_color;
   font-size: 2.5rem;
   border: none;
-  right: 1rem;
-  top: 1rem;
 }
 
+.betweenBoxBox {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  //justify-content: center;
+  width: 10%;
+}
 .mainSelect {
   width: 150px;
   height: 40px;

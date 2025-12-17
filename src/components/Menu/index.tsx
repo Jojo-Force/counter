@@ -1,7 +1,7 @@
-import style from "../Quiz/style.module.scss";
-import { Button, Radio, Select, Space, Modal } from "antd";
+import style from "./style.module.scss";
+import { Select, Modal } from "antd";
 import s from "./style.module.scss";
-import type { itemProps, SettingProps } from "../../types/api";
+import type { SettingProps } from "../../types/api";
 import Item from "./Item";
 import {
   CloseCircleOutlined,

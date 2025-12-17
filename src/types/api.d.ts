@@ -61,7 +61,7 @@ interface JudgeQuizProps {
   rightAnswer: string;
 }
 
-interface QuizProps {
+interface ReaderProps {
   number: number;
   workData: Work;
   settingValue: number;

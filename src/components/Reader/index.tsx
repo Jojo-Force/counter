@@ -66,15 +66,32 @@ const Reader = ({
       </header>
       <section>
         <div className={style.countContainer}>
-          <p className={style.title}>
-            {
+          {/*<p className={style.title}>*/}
+          {/*{*/}
+          {/*  textData.find(*/}
+          {/*    (t) =>*/}
+          {/*      t.name ===*/}
+          {/*      itemDatas.find((item) => item.id === currentId)?.selected,*/}
+          {/*  )?.name*/}
+          {/*}*/}
+          <PinyinText
+            globalSetting={globalSetting}
+            pinyin={
+              textData.find(
+                (t) =>
+                  t.name ===
+                  itemDatas.find((item) => item.id === currentId)?.selected,
+              )?.namePinyin
+            }
+            text={
               textData.find(
                 (t) =>
                   t.name ===
                   itemDatas.find((item) => item.id === currentId)?.selected,
               )?.name
             }
-          </p>
+          />
+          {/*</p>*/}
           <span
             className={style.counter}
             onClick={() =>

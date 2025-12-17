@@ -90,6 +90,7 @@ interface TextData {
   name: string;
   text: string;
   pinyin: string[];
+  namePinyin: string[];
 }
 
 interface itemProps {

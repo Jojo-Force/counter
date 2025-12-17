@@ -13,6 +13,8 @@ const PinyinText: React.FC<PinyinTextProps> = ({
   text,
   pinyin,
   globalSetting,
+  className,
+  style,
 }) => {
   const pinyinNodes = usePinyinText(text, pinyin);
 

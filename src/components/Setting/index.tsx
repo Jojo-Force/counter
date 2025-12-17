@@ -90,13 +90,16 @@ const Setting = ({
       },
       onOk() {
         //setQuizOrSetting(QUIZ_PAGE);
-        setItemDatas(
-          itemDatas.map((i) =>
-            i.id === currentId ? { ...i, num: i.num - 1 } : i,
-          ),
-        );
-        setNowCount(nowCount - 1);
-        msgSucess("已经减一");
+        if (itemDatas.find((item) => item.id === currentId).num > 0) {
+          setItemDatas(
+            itemDatas.map((i) =>
+              i.id === currentId ? { ...i, num: i.num - 1 } : i,
+            ),
+          );
+          setNowCount(nowCount - 1);
+          msgSucess("已经减一");
+        }
+        msgSucess("已经为零");
       },
       onCancel() {
         console.log("Cancel");
@@ -121,7 +124,7 @@ const Setting = ({
 
   return (
     <div className={s.setting}>
-      <div className={clsx(s.setting__box, s.mb)}>
+      <div className={s.setting__box}>
         <button onClick={clearBtn} className={s.btn}>
           清空计数
         </button>
@@ -152,7 +155,7 @@ const Setting = ({
         <span className={s.setting__box__title}>大小</span>
         <InputRange
           min={1}
-          max={30}
+          max={40}
           step={1}
           value={globalSetting.fontSize}
           onChange={(e) =>

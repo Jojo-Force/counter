@@ -13,9 +13,6 @@
   background-color: inherit;
   //gap: 1.2rem;
 }
-.mb{
-  margin-top: 4rem;
-}
 .setting__box {
   display: flex;
   justify-content: space-between;
@@ -32,12 +29,14 @@
 
 }
 .setting__box__title{
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   font-size: 2rem;
   font-weight: 800;
   width: 5rem;
   color: g.$text_color;
   background-color: g.$tint-color3;
+  backdrop-filter: blur(2px); /* 关键：毛玻璃模糊 */
+  -webkit-backdrop-filter: blur(2px); /* Safari 兼容 */
 }
 .btn {
   padding-bottom: 0.5rem;

@@ -31,11 +31,17 @@ const Menu = ({
 
   const [showNew, setShowNew] = useState(false);
   const [showNewGroup, setShowNewGroup] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    if (globalSetting.nowGroupId > 0) {
+    if (globalSetting.nowGroupId >= 0) {
       setSelectedGroupId(globalSetting.nowGroupId);
+    } else if (groupDatas.length === 0) {
+      setSelectedGroupId(-1);
+    } else {
+      setSelectedGroupId(-2);
     }
+    setIsHydrated(true);
   }, []);
   const addGroup = () => {
     if (!showNewGroup) {
@@ -103,6 +109,7 @@ const Menu = ({
         if (setD !== null) {
           setD((prev) => prev.filter((p, index) => p.groupId !== id));
         }
+
         msgSucess("已经删除！");
         //setQuizOrSetting(QUIZ_PAGE);
       },
@@ -136,6 +143,26 @@ const Menu = ({
     setGlobalSetting({ ...globalSetting, nowGroupId: value });
     console.log(value);
   };
+  useEffect(() => {
+    if (groupDatas.find((g) => g.id === selectedGroupId)) {
+    } else if (groupDatas.length > 0) {
+      setSelectedGroupId(() => groupDatas[0].id);
+      setGlobalSetting({
+        ...globalSetting,
+        nowGroupId: groupDatas[0].id,
+      });
+    } else {
+      setSelectedGroupId(() => -1);
+      setGlobalSetting({
+        ...globalSetting,
+        nowGroupId: -1,
+      });
+    }
+  }, [groupDatas]);
+
+  if (!isHydrated) {
+    return null; // 或 <div style={{visibility: 'hidden'}}></div>
+  }
   return (
     <div className={style.menu}>
       <header className={style.bigTitle}>
@@ -149,8 +176,9 @@ const Menu = ({
               />
             </div>
             <Select
-              value={selectedGroupId}
+              value={selectedGroupId >= 0 ? selectedGroupId : "请添加组"}
               className={s.mainSelect}
+              notFoundContent={null}
               onChange={handleGroupChange}
               options={groupDatas.map((t) => ({
                 value: t.id,

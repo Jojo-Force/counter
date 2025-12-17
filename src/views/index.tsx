@@ -81,22 +81,34 @@ const View = () => {
     }
   });
 
-  const [globalSetting, setGlobalSetting] = useState({
+  const DEFAULT_GLOBAL_SETTING = {
     singerCount: false,
-    username: "纪善馨",
-    nowGroupId: 1,
-    nowItemId: 7,
+    username: "",
+    nowGroupId: -1,
+    nowItemId: -1,
     fontSize: "30",
     lineHeight: "1.5",
     buttonX: "-50",
     buttonY: "0",
     pinyinEnable: false,
+  };
+  const [globalSetting, setGlobalSetting] = useState(() => {
+    try {
+      const saved = localStorage.getItem("globalSetting");
+      if (saved) {
+        return JSON.parse(saved);
+      } else {
+        return DEFAULT_GLOBAL_SETTING;
+      }
+    } catch {
+      return [];
+    }
   });
 
   useEffect(() => {
-    console.log("number 已更新为：", itemDatas, groupDatas);
+    console.log("number 已更新为：", itemDatas, groupDatas, globalSetting);
     saveData();
-  }, [itemDatas, groupDatas]);
+  }, [itemDatas, groupDatas, globalSetting]);
 
   useEffect(() => {
     if (pageNum === 1) {
@@ -108,18 +120,10 @@ const View = () => {
   }, [pageNum, currentId]);
 
   useEffect(() => {
-    if (pageNum === 1) {
-      setGlobalSetting({ ...globalSetting, nowItemId: -1 });
-    }
-    if (pageNum === 2) {
-      setGlobalSetting({ ...globalSetting, nowItemId: currentId });
-    }
-  }, [pageNum, currentId]);
-
-  useEffect(() => {
-    if (globalSetting.nowItemId > 0) {
+    if (globalSetting.nowItemId >= 0) {
       setPageNum2(2, globalSetting.nowItemId);
     }
+    setIsHydrated(true);
   }, []);
 
   const setPageNum2 = (val, id) => {
@@ -169,6 +173,11 @@ const View = () => {
       },
     });
   };
+  const [isHydrated, setIsHydrated] = useState(false);
+  if (!isHydrated) {
+    return null; // 或 <div style={{visibility: 'hidden'}}></div>
+  }
+
   return (
     <div className={style.loginPage}>
       {/* 登录盒子 */}

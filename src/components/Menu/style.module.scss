@@ -11,6 +11,10 @@
   -ms-overflow-style: none; /* IE/Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.menuBox::-webkit-scrollbar {
+  display: none;
+}
 .title {
 }
 
@@ -105,6 +109,7 @@
     background-color: g.$light-color !important;
     color: g.$text_color !important;
     padding: 10px 16px !important;
+    font-size: 2rem !important;
   }
 
   /* 鼠标悬停 */

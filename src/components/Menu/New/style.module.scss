@@ -34,7 +34,7 @@ input {
   background-color: g.$text_color;
   color: g.$tint-color;
   &::placeholder {
-    color: g.$tint-color;
+    color: g.$text_dark_color;
   }
   display: block;
   width: 80%; // 宽度
@@ -58,7 +58,7 @@ input {
   height: 50px;
   width: 80%; // 宽度
   margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 
   &:hover {
     background-color: g.$setting_btn_hover_color !important;

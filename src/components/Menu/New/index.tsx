@@ -21,7 +21,9 @@ const New = ({
 }: NewProps) => {
   const handleChange = (value: string) => {
     setSelected(() => value);
-    setCounterName(() => value);
+    if (value === "千手千眼无碍大悲心陀罗尼") setCounterName(() => "大悲咒");
+    else if (value === "般若菠萝蜜心经") setCounterName(() => "心经");
+    else setCounterName(() => value);
   };
   const handleGroupChange = (value: number) => {
     setSelectedGroup(value);
@@ -83,7 +85,13 @@ const New = ({
     setSelected(undefined);
     setShowNew(false);
   };
+  useEffect(() => {
+    setGlobalSetting({ ...globalSetting, username: personName });
+  }, [personName]);
 
+  useEffect(() => {
+    setPersonName(globalSetting.username);
+  }, []);
   return (
     <div className={s.box}>
       <p>添加新计数器</p>
@@ -98,6 +106,7 @@ const New = ({
       />
       <Select
         defaultValue="分组"
+        notFoundContent={"请添加分组"}
         style={{ width: "80%", height: "40px", fontSize: "3rem" }}
         onChange={handleGroupChange}
         options={groupDatas.map((g) => ({

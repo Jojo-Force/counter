@@ -17,6 +17,8 @@ const Quiz = ({
   setItemDatas,
   msgSucess,
   msgError,
+  globalSetting,
+  setGlobalSetting,
 }: QuizProps) => {
   const [nowCount, setNowCount] = useState(0);
   const [showSetting, setShowSetting] = useState(false);
@@ -72,11 +74,27 @@ const Quiz = ({
               )?.name
             }
           </p>
-          <span className={style.counter}>
-            {/*{itemDatas.find((item) => item.id === currentId)?.num ?? 0}*/}
-            {nowCount}
+          <span
+            className={style.counter}
+            onClick={() =>
+              setGlobalSetting({
+                ...globalSetting,
+                singerCount: !globalSetting.singerCount,
+              })
+            }
+          >
+            {/*{globalSetting.singerCount === true && (itemDatas.find((item) => item.id === currentId)?.title ?? 0)}*/}
+            {globalSetting.singerCount === false &&
+              (itemDatas.find((item) => item.id === currentId)?.num ?? 0)}
+            {globalSetting.singerCount === true && nowCount}
           </span>
-          <p className={style.text}>
+          <p
+            className={style.text}
+            style={{
+              fontSize: `${globalSetting.fontSize}px`,
+              lineHeight: `${globalSetting.lineHeight}`,
+            }}
+          >
             {
               textData.find(
                 (t) =>
@@ -85,7 +103,15 @@ const Quiz = ({
               )?.text
             }
           </p>
-          <button className={style.countBtn} onClick={countUp}></button>
+          <button
+            style={{
+              transform: `translate(${globalSetting.buttonX}%, ${globalSetting.buttonY}%)`,
+            }}
+            className={style.countBtn}
+            onClick={countUp}
+          >
+            {" "}
+          </button>
           <audio ref={audioRef} src={soundFile1} preload="auto"></audio>
         </div>
       </section>
@@ -100,6 +126,8 @@ const Quiz = ({
           setShowSetting={setShowSetting}
           setNowCount={setNowCount}
           nowCount={nowCount}
+          globalSetting={globalSetting}
+          setGlobalSetting={setGlobalSetting}
         />
       )}
     </div>

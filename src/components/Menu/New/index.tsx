@@ -4,7 +4,7 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { Modal, Select } from "antd";
 const { confirm } = Modal;
 import { QUIZ_PAGE } from "../../../constant";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 interface NewProps {
@@ -12,24 +12,36 @@ interface NewProps {
   setData: (any) => void;
   groupDatas: any;
 }
-const New = ({ setShowNew, setData, groupDatas }: NewProps) => {
+const New = ({
+  setShowNew,
+  setData,
+  groupDatas,
+  globalSetting,
+  setGlobalSetting,
+}: NewProps) => {
   const handleChange = (value: string) => {
-    setSelected(value);
+    setSelected(() => value);
+    setCounterName(() => value);
   };
   const handleGroupChange = (value: number) => {
     setSelectedGroup(value);
   };
-  const counterNameRef = useRef<HTMLInputElement>(null);
-  const personNameRef = useRef<HTMLInputElement>(null);
 
   const [selected, setSelected] = useState<string>();
   const [selectedGroup, setSelectedGroup] = useState(-1);
+  const [counterName, setCounterName] = useState<string>("");
+  const [personName, setPersonName] = useState<string>("");
 
+  useEffect(() => {
+    setPersonName(globalSetting.username);
+  }, []);
   const handleConfirm = () => {
-    const counterName = counterNameRef.current?.value.trim();
-    const personName = personNameRef.current?.value.trim();
-
-    if (!counterName || !personName || !selected || selectedGroup === -1) {
+    if (
+      counterName === "" ||
+      personName === "" ||
+      !selected ||
+      selectedGroup === -1
+    ) {
       alert("请填写所有字段");
       return;
     }
@@ -66,8 +78,8 @@ const New = ({ setShowNew, setData, groupDatas }: NewProps) => {
   };
 
   const handleCancel = () => {
-    if (counterNameRef.current) counterNameRef.current.value = "";
-    if (personNameRef.current) personNameRef.current.value = "";
+    setCounterName(() => "");
+    setPersonName(() => "");
     setSelected(undefined);
     setShowNew(false);
   };
@@ -93,8 +105,16 @@ const New = ({ setShowNew, setData, groupDatas }: NewProps) => {
           label: g.groupName,
         }))}
       />
-      <input ref={counterNameRef} placeholder={"计数器名称"} />
-      <input ref={personNameRef} placeholder={"计数者姓名"} />
+      <input
+        value={counterName}
+        onChange={(e) => setCounterName(() => e.target.value)}
+        placeholder={"计数器名称"}
+      />
+      <input
+        value={personName}
+        onChange={(e) => setPersonName(() => e.target.value)}
+        placeholder={"计数者姓名"}
+      />
       <button className={s.btn} onClick={handleConfirm}>
         确定
       </button>

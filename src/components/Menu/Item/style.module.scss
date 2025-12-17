@@ -8,14 +8,24 @@
   //gap: 1.6rem;
   place-items: center;
 }
+.items__num{
+  font-size: 4rem;
+}
 
+.items__time{
+  font-size: 1.2rem;
+}
+
+.items__name{
+  font-size: 1.2rem;
+}
 .deleteBtn {
   color: g.$text_dark_color;
   font-size: 2rem;
   border: none;
   position: absolute;
   right: 1rem;
-  top: 1rem;
+  top: 0.2rem;
 }
 
 .itemsBox {

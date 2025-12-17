@@ -14,10 +14,10 @@ const item = ({
   return (
     <div className={s.itemsBox}>
       <div className={s.items} onClick={() => onClick(id)}>
-        <span>{num}</span>
-        <span>{title}</span>
-        <span>{time}</span>
-        <span>{name}</span>
+        <span className={s.items__num}>{num}</span>
+        <span className={s.items__title}>{title}</span>
+        <span className={s.items__time}>{time}</span>
+        <span className={s.items__name}>{name}</span>
       </div>
 
       <CloseOutlined className={s.deleteBtn} onClick={() => deleteClick(id)} />

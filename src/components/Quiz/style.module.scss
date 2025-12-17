@@ -130,7 +130,7 @@
   border-radius: 2rem;
   position: absolute;
   bottom: 18rem;
-  left: 30%;
+  left: 50%;
   transform: translate(-50%, 0%);
   //background-color: g.$next_btn_color;
   height: 12rem;
@@ -175,8 +175,9 @@
   height: 80vh; // 固定高度
   overflow-y: auto;
   white-space: pre-line;
-  font-size: 2.8rem;
+  font-size: 3rem;
   padding-bottom: 40rem;
+  line-height: 1.5;
   -ms-overflow-style: none; /* IE/Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -219,12 +220,12 @@
 }
 
 .settingIcon {
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: g.$text_dark_color;
 }
 
 .formIcon {
-  font-size: 4rem;
+  font-size: 3rem;
   color: g.$text_dark_color;
 }
 .bigTitle {

@@ -43,6 +43,7 @@ const View = () => {
     try {
       localStorage.setItem("itemDatas", JSON.stringify(itemDatas));
       localStorage.setItem("groupDatas", JSON.stringify(groupDatas));
+      localStorage.setItem("globalSetting", JSON.stringify(globalSetting));
     } catch (e) {
       console.error("保存失败", e);
       // 可选：提示用户“存储空间已满”等
@@ -80,10 +81,46 @@ const View = () => {
     }
   });
 
+  const [globalSetting, setGlobalSetting] = useState({
+    singerCount: false,
+    username: "纪善馨",
+    nowGroupId: 1,
+    nowItemId: 7,
+    fontSize: "30",
+    lineHeight: "1.5",
+    buttonX: "-50",
+    buttonY: "0",
+    pinyinEnable: false,
+  });
+
   useEffect(() => {
     console.log("number 已更新为：", itemDatas, groupDatas);
     saveData();
   }, [itemDatas, groupDatas]);
+
+  useEffect(() => {
+    if (pageNum === 1) {
+      setGlobalSetting({ ...globalSetting, nowItemId: -1 });
+    }
+    if (pageNum === 2) {
+      setGlobalSetting({ ...globalSetting, nowItemId: currentId });
+    }
+  }, [pageNum, currentId]);
+
+  useEffect(() => {
+    if (pageNum === 1) {
+      setGlobalSetting({ ...globalSetting, nowItemId: -1 });
+    }
+    if (pageNum === 2) {
+      setGlobalSetting({ ...globalSetting, nowItemId: currentId });
+    }
+  }, [pageNum, currentId]);
+
+  useEffect(() => {
+    if (globalSetting.nowItemId > 0) {
+      setPageNum2(2, globalSetting.nowItemId);
+    }
+  }, []);
 
   const setPageNum2 = (val, id) => {
     console.log(val, id);
@@ -149,6 +186,8 @@ const View = () => {
               setItemDatas={setItemDatas}
               msgSucess={msgSucess}
               msgError={msgError}
+              globalSetting={globalSetting}
+              setGlobalSetting={setGlobalSetting}
             />
           )}
           {pageNum === 1 && (
@@ -160,6 +199,8 @@ const View = () => {
               setGroupDatas={setGroupDatas}
               msgSucess={msgSucess}
               msgError={msgError}
+              globalSetting={globalSetting}
+              setGlobalSetting={setGlobalSetting}
             />
           )}
           {

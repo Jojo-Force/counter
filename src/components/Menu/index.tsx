@@ -12,7 +12,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import New from "./New";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewGroup from "./NewGroup";
 import textData from "../../textdata";
 
@@ -24,11 +24,19 @@ const Menu = ({
   setGroupDatas,
   msgSucess,
   msgError,
+  globalSetting,
+  setGlobalSetting,
 }: SettingProps) => {
   const [selectedGroupId, setSelectedGroupId] = useState(0);
 
   const [showNew, setShowNew] = useState(false);
   const [showNewGroup, setShowNewGroup] = useState(false);
+
+  useEffect(() => {
+    if (globalSetting.nowGroupId > 0) {
+      setSelectedGroupId(globalSetting.nowGroupId);
+    }
+  }, []);
   const addGroup = () => {
     if (!showNewGroup) {
       //setShowNew(false);
@@ -125,6 +133,7 @@ const Menu = ({
   };
   const handleGroupChange = (value: number) => {
     setSelectedGroupId(value);
+    setGlobalSetting({ ...globalSetting, nowGroupId: value });
     console.log(value);
   };
   return (
@@ -178,6 +187,8 @@ const Menu = ({
             setShowNew={setShowNew}
             setData={setData}
             groupDatas={groupDatas}
+            globalSetting={globalSetting}
+            setGlobalSetting={setGlobalSetting}
           />
         )}
 

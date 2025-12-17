@@ -3,6 +3,8 @@ import type { SettingProps } from "../../types/api";
 import { Modal, Switch } from "antd";
 import React, { useRef, useState } from "react";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import InputRange from "./InputRange";
+import clsx from "clsx";
 
 const onChange = (checked: boolean) => {
   console.log(`switch to ${checked}`);
@@ -17,6 +19,8 @@ const Setting = ({
   setShowSetting,
   setNowCount,
   nowCount,
+  globalSetting,
+  setGlobalSetting,
 }: SettingProps) => {
   const inputCount = useRef<HTMLInputElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -114,9 +118,10 @@ const Setting = ({
   const addBtn = () => {
     setIsModalOpen(true);
   };
+
   return (
     <div className={s.setting}>
-      <div className={s.setting__box}>
+      <div className={clsx(s.setting__box, s.mb)}>
         <button onClick={clearBtn} className={s.btn}>
           清空计数
         </button>
@@ -130,6 +135,54 @@ const Setting = ({
         <button onClick={addBtn} className={s.btn}>
           增加计数
         </button>
+      </div>
+      <div className={s.setting__box__big}>
+        <span className={s.setting__box__title}>行高</span>
+        <InputRange
+          min={1}
+          max={10}
+          step={0.1}
+          value={globalSetting.lineHeight}
+          onChange={(e) =>
+            setGlobalSetting({ ...globalSetting, lineHeight: e.target.value })
+          }
+        />
+      </div>
+      <div className={s.setting__box__big}>
+        <span className={s.setting__box__title}>大小</span>
+        <InputRange
+          min={1}
+          max={30}
+          step={1}
+          value={globalSetting.fontSize}
+          onChange={(e) =>
+            setGlobalSetting({ ...globalSetting, fontSize: e.target.value })
+          }
+        />
+      </div>
+      <div className={s.setting__box__big}>
+        <span className={s.setting__box__title}>横轴</span>
+        <InputRange
+          min={-200}
+          max={50}
+          step={1}
+          value={globalSetting.buttonX}
+          onChange={(e) =>
+            setGlobalSetting({ ...globalSetting, buttonX: e.target.value })
+          }
+        />
+      </div>
+      <div className={s.setting__box__big}>
+        <span className={s.setting__box__title}>竖轴</span>
+        <InputRange
+          min={-400}
+          max={400}
+          step={1}
+          value={globalSetting.buttonY}
+          onChange={(e) =>
+            setGlobalSetting({ ...globalSetting, buttonY: e.target.value })
+          }
+        />
       </div>
       {/*<div className={s.setting__box}>*/}
       {/*  <span className={s.spanName}>计数声音</span>*/}

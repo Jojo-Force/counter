@@ -6,27 +6,27 @@ import style from "../style.module.scss";
 interface PinyinTextProps {
   text: string;
   pinyin?: string[];
+  className: string;
+  style?: any;
   globalSetting: any;
 }
 
 const PinyinText: React.FC<PinyinTextProps> = ({
   text,
   pinyin,
-  globalSetting,
   className,
   style,
+  globalSetting,
 }) => {
   const pinyinNodes = usePinyinText(text, pinyin);
 
-  return (
-    <p
-      className={style.text}
-      style={{
-        fontSize: `${globalSetting.fontSize}px`,
-        lineHeight: `${globalSetting.lineHeight}`,
-      }}
-    >
+  return globalSetting.pinyinEnable ? (
+    <p className={className} style={style}>
       {pinyinNodes}
+    </p>
+  ) : (
+    <p className={className} style={style}>
+      {text}
     </p>
   );
 };

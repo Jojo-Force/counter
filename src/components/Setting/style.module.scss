@@ -26,9 +26,8 @@
   align-items: center;
   width: 80%;
   margin-bottom: 3rem;
-
 }
-.setting__box__title{
+.setting__box__title {
   border-radius: 0.5rem;
   font-size: 2rem;
   font-weight: 800;
@@ -59,4 +58,39 @@
 
 .spanName {
   font-size: 2rem;
+}
+
+:global {
+  /* 整个开关容器 */
+  .ant-switch {
+    // 自定义宽度/高度（默认是 22x12）
+    width: 48px !important;
+    height: 24px !important;
+    min-width: 48px !important; /* 防止内容挤压 */
+
+    // 关闭状态背景色
+    background: g.$text_dark_color !important;
+
+    // 开启状态背景色
+    &.ant-switch-checked {
+      background: g.$primary-color !important; // 默认绿色，可改为你想要的颜色
+    }
+
+    //// 滑块（handle）样式
+    //.ant-switch-handle {
+    //  width: 20px !important;
+    //  height: 20px !important;
+    //  top: 2px !important; // 垂直居中（根据 height 调整）
+    //}
+    //
+    //// 开启时滑块位置
+    //&.ant-switch-checked .ant-switch-handle {
+    //  left: calc(100% - 20px - 2px) !important; // 20px=滑块宽, 2px=边距
+    //}
+    //
+    //// 禁用状态
+    //&.ant-switch-disabled {
+    //  opacity: 0.6;
+    //}
+  }
 }

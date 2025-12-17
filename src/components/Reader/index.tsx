@@ -76,6 +76,8 @@ const Reader = ({
           {/*}*/}
           <PinyinText
             globalSetting={globalSetting}
+            className={style.title}
+            style={{}}
             pinyin={
               textData.find(
                 (t) =>
@@ -114,7 +116,12 @@ const Reader = ({
           {/*  }}*/}
           {/*>*/}
           <PinyinText
+            className={style.text}
             globalSetting={globalSetting}
+            style={{
+              fontSize: `${globalSetting.fontSize}px`,
+              lineHeight: `${globalSetting.lineHeight}`,
+            }}
             pinyin={
               textData.find(
                 (t) =>

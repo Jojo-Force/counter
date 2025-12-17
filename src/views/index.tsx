@@ -89,7 +89,7 @@ const View = () => {
     lineHeight: "1.5",
     buttonX: "-50",
     buttonY: "0",
-    pinyinEnable: false,
+    pinyinEnable: true,
   };
   const [globalSetting, setGlobalSetting] = useState(() => {
     try {

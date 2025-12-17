@@ -140,6 +140,16 @@ const Setting = ({
         </button>
       </div>
       <div className={s.setting__box__big}>
+        <span className={s.setting__box__title}>拼音提示</span>
+        <Switch
+          defaultChecked
+          onChange={(checked) =>
+            setGlobalSetting({ ...globalSetting, pinyinEnable: checked })
+          }
+          value={globalSetting.pinyinEnable}
+        />
+      </div>
+      <div className={s.setting__box__big}>
         <span className={s.setting__box__title}>行高</span>
         <InputRange
           min={1}
@@ -187,10 +197,7 @@ const Setting = ({
           }
         />
       </div>
-      {/*<div className={s.setting__box}>*/}
-      {/*  <span className={s.spanName}>计数声音</span>*/}
-      {/*  <Switch defaultChecked onChange={onChange} />*/}
-      {/*</div>*/}
+
       {/*<div className={s.setting__box}>*/}
       {/*  <span className={s.spanName}>计数震动</span>*/}
       {/*  <Switch defaultChecked onChange={onChange} />*/}

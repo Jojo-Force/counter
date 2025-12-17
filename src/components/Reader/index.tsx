@@ -8,6 +8,7 @@ import soundFile2 from "../../assets/sound/fish2.wav";
 import soundFile3 from "../../assets/sound/fish3.wav";
 import { FormOutlined, SettingOutlined } from "@ant-design/icons";
 import Setting from "../Setting";
+import PinyinText from "./PinyinText";
 
 const Reader = ({
   settingValue,
@@ -88,21 +89,31 @@ const Reader = ({
               (itemDatas.find((item) => item.id === currentId)?.num ?? 0)}
             {globalSetting.singerCount === true && nowCount}
           </span>
-          <p
-            className={style.text}
-            style={{
-              fontSize: `${globalSetting.fontSize}px`,
-              lineHeight: `${globalSetting.lineHeight}`,
-            }}
-          >
-            {
+          {/*<p*/}
+          {/*  className={style.text}*/}
+          {/*  style={{*/}
+          {/*    fontSize: `${globalSetting.fontSize}px`,*/}
+          {/*    lineHeight: `${globalSetting.lineHeight}`,*/}
+          {/*  }}*/}
+          {/*>*/}
+          <PinyinText
+            globalSetting={globalSetting}
+            pinyin={
+              textData.find(
+                (t) =>
+                  t.name ===
+                  itemDatas.find((item) => item.id === currentId)?.selected,
+              )?.pinyin
+            }
+            text={
               textData.find(
                 (t) =>
                   t.name ===
                   itemDatas.find((item) => item.id === currentId)?.selected,
               )?.text
             }
-          </p>
+          />
+          {/*</p>*/}
           <button
             style={{
               transform: `translate(${globalSetting.buttonX}%, ${globalSetting.buttonY}%)`,

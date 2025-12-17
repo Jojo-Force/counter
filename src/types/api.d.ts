@@ -89,6 +89,7 @@ interface SettingProps {
 interface TextData {
   name: string;
   text: string;
+  pinyin: string[];
 }
 
 interface itemProps {

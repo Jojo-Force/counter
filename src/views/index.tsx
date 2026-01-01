@@ -90,6 +90,7 @@ const View = () => {
     buttonX: "-50",
     buttonY: "0",
     pinyinEnable: true,
+    soundEnable: true,
   };
   const [globalSetting, setGlobalSetting] = useState(() => {
     try {

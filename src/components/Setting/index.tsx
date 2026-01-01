@@ -150,6 +150,16 @@ const Setting = ({
         />
       </div>
       <div className={s.setting__box__big}>
+        <span className={s.setting__box__title}>声音</span>
+        <Switch
+          defaultChecked
+          onChange={(checked) =>
+            setGlobalSetting({ ...globalSetting, soundEnable: checked })
+          }
+          value={globalSetting.soundEnable}
+        />
+      </div>
+      <div className={s.setting__box__big}>
         <span className={s.setting__box__title}>行高</span>
         <InputRange
           min={1}

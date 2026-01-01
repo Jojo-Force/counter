@@ -35,7 +35,7 @@ const Reader = ({
   const sounds = [soundFile1, soundFile2, soundFile3];
 
   const playAudio = () => {
-    if (audioRef.current) {
+    if (globalSetting.soundEnable && audioRef.current) {
       const randomNum = Math.floor(Math.random() * 3);
       audioRef.current.src = sounds[randomNum];
       audioRef.current.load();

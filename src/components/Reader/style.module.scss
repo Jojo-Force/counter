@@ -179,8 +179,12 @@
   padding-bottom: 40rem;
   line-height: 1.5;
   width: 100%;
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.text::-webkit-scrollbar {
+  display: none; /* Webkit 浏览器（Chrome/Safari） */
 }
 
 .counter {

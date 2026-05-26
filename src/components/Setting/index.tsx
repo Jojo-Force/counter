@@ -39,8 +39,8 @@ const Setting = ({
     }
     setItemDatas(
       itemDatas.map((i) =>
-        i.id === currentId ? { ...i, num: i.num + parseInt(addCount) } : i,
-      ),
+        i.id === currentId ? { ...i, num: i.num + parseInt(addCount) } : i
+      )
     );
     setNowCount(nowCount + parseInt(addCount));
     setIsModalOpen(false);
@@ -64,7 +64,7 @@ const Setting = ({
       onOk() {
         //setQuizOrSetting(QUIZ_PAGE);
         setItemDatas(
-          itemDatas.map((i) => (i.id === currentId ? { ...i, num: 0 } : i)),
+          itemDatas.map((i) => (i.id === currentId ? { ...i, num: 0 } : i))
         );
         setNowCount(0);
         msgSucess("已经清空");
@@ -93,13 +93,14 @@ const Setting = ({
         if (itemDatas.find((item) => item.id === currentId).num > 0) {
           setItemDatas(
             itemDatas.map((i) =>
-              i.id === currentId ? { ...i, num: i.num - 1 } : i,
-            ),
+              i.id === currentId ? { ...i, num: i.num - 1 } : i
+            )
           );
           setNowCount(nowCount - 1);
           msgSucess("已经减一");
+        } else {
+          msgSucess("已经为零");
         }
-        msgSucess("已经为零");
       },
       onCancel() {
         console.log("Cancel");

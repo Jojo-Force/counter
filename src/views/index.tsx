@@ -7,9 +7,18 @@ const { confirm } = Modal;
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import Reader from "../components/Reader";
 import Menu from "../components/Menu";
+import { useStorage } from "../storage/useStorage";
 
 const View = () => {
-  // 加载完这个组件之后，加载背景
+  const {
+    itemDatas,
+    setItemDatas,
+    groupDatas,
+    setGroupDatas,
+    globalSetting,
+    setGlobalSetting,
+    isHydrated,
+  } = useStorage();
 
   const msgSucess = (str: string) => {
     message.success(
@@ -38,77 +47,9 @@ const View = () => {
       2,
     );
   };
-  const saveData = () => {
-    try {
-      localStorage.setItem("itemDatas", JSON.stringify(itemDatas));
-      localStorage.setItem("groupDatas", JSON.stringify(groupDatas));
-      localStorage.setItem("globalSetting", JSON.stringify(globalSetting));
-    } catch (e) {
-      console.error("保存失败", e);
-      // 可选：提示用户“存储空间已满”等
-    }
-  };
-
-  const loadData = () => {
-    const data = localStorage.getItem("itemDatas");
-    const setdata = data ? JSON.parse(data) : [];
-    setItemDatas(setdata);
-
-    const data2 = localStorage.getItem("groupDatas");
-    const setdata2 = data2 ? JSON.parse(data2) : [];
-    setGroupDatas(setdata2);
-  };
-
-  const initData = () => {};
 
   const [pageNum, setPageNum] = useState(1);
   const [currentId, setCurrentId] = useState(1);
-
-  const [itemDatas, setItemDatas] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("itemDatas") || "[]");
-    } catch {
-      return [];
-    }
-  });
-
-  const [groupDatas, setGroupDatas] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("groupDatas") || "[]");
-    } catch {
-      return [];
-    }
-  });
-
-  const DEFAULT_GLOBAL_SETTING = {
-    singerCount: false,
-    username: "",
-    nowGroupId: -1,
-    nowItemId: -1,
-    fontSize: "30",
-    lineHeight: "1.5",
-    buttonX: "-50",
-    buttonY: "0",
-    pinyinEnable: true,
-    soundEnable: true,
-  };
-  const [globalSetting, setGlobalSetting] = useState(() => {
-    try {
-      const saved = localStorage.getItem("globalSetting");
-      if (saved) {
-        return JSON.parse(saved);
-      } else {
-        return DEFAULT_GLOBAL_SETTING;
-      }
-    } catch {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    console.log("number 已更新为：", itemDatas, groupDatas, globalSetting);
-    saveData();
-  }, [itemDatas, groupDatas, globalSetting]);
 
   useEffect(() => {
     if (pageNum === 1) {
@@ -123,7 +64,6 @@ const View = () => {
     if (globalSetting.nowItemId >= 0) {
       setPageNum2(2, globalSetting.nowItemId);
     }
-    setIsHydrated(true);
   }, []);
 
   const setPageNum2 = (val, id) => {
@@ -131,23 +71,6 @@ const View = () => {
     setCurrentId(id);
     setPageNum(val);
   };
-  // useEffect(() => {
-  //   console.log("number 已更新为：", number, showAnswerBtn);
-  //   setQuizType(getQuizType());
-  //   saveData();
-  // }, [number, showAnswerBtn]);
-
-  // useEffect(() => {
-  //   if (life <= 0) {
-  //     msgError("游戏失败！");
-  //     setNumber(1);
-  //     setValue("");
-  //     setMulValue([""]);
-  //     setRightAnswer("");
-  //     setLife(LIFE_INIT);
-  //     setShowAnswerBtn(false);
-  //   }
-  // }, [life, settingValue]);
 
   const showConfirm = () => {
     confirm({
@@ -163,7 +86,6 @@ const View = () => {
       onOk() {
         msgSucess("选择了新的题目，重新开始！");
         //setLastSettingValue(settingValue);
-        initData();
         //setQuizOrSetting(QUIZ_PAGE);
       },
       onCancel() {
@@ -173,7 +95,6 @@ const View = () => {
       },
     });
   };
-  const [isHydrated, setIsHydrated] = useState(false);
   if (!isHydrated) {
     return null; // 或 <div style={{visibility: 'hidden'}}></div>
   }
